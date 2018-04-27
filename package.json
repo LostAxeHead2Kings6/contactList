@@ -1,0 +1,27 @@
+{
+  "name": "contactmanager",
+  "version": "1.0.0",
+  "description": "single-page applcation for managing contacts",
+  "main": "server/index.js",
+  "scripts": {
+    "server-dev": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LostAxeHead2Kings6/contactList.git"
+  },
+  "author": "Michael Vasios",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LostAxeHead2Kings6/contactList/issues"
+  },
+  "homepage": "https://github.com/LostAxeHead2Kings6/contactList#readme",
+  "dependencies": {
+    "angular": "^1.6.3",
+    "axios": "^0.18.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.0",
+    "mongoose": "^4.8.6",
+    "nodemon": "^1.17.1"
+  }
+}
