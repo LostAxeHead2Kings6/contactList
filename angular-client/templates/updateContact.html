@@ -1,9 +1,9 @@
 <h1>
   UPDATE EXISTING CONTACT
 </h1>
-<form name="updateContact" ng-submit="$ctrl.updateContact(updateContact)">
-  First name:<input name='firstname' value={{$ctrl.featured.firstname}} type='text'>
-  Last name:<input name='lastname' value={{$ctrl.featured.lastname}} type='text'>
-  Email:<input name='email' value={{$ctrl.featured.email}} type='text'>
+<form name="updateContact" ng-submit="$ctrl.updateContact($ctrl.featured._id, $ctrl.featured.firstname, $ctrl.featured.lastname, $ctrl.featured.email)">
+  First name:<input name='firstname' ng-model="$ctrl.featured.firstname" type='text'>
+  Last name:<input name='lastname' ng-model="$ctrl.featured.lastname" type='text'>
+  Email:<input name='email' ng-model="$ctrl.featured.email" type='text'>
   <input type='submit'>
 </form>
