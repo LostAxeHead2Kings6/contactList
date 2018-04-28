@@ -7,11 +7,17 @@ angular.module('app', [])
 })
 
 .controller('AppCtrl', function(onLoad) {
-  this.loadList = (data) => {
+  this.featuredEntry = {};
+
+  this.populateList = (data) => {
     this.list = data.data;
+  };
+
+  this.updateThisEntry = (entry) => {
+    this.featuredEntry = JSON.parse(JSON.stringify(entry));
   }
 
-  onLoad.calldb(this.loadList);
+  onLoad.calldb(this.populateList);
 })
 
 .component('app', {
