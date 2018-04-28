@@ -3,9 +3,12 @@
     THE APP
   </h2>
   <div>
-    <list names="$ctrl.list"/>
+    <list names="$ctrl.list" service="$ctrl.updateThisEntry"/>
   </div>
   <div>
-    <contact service="$ctrl.populateList"/>
+    <add-contact-form service="$ctrl.populateList"/>
+  </div>
+  <div>
+    <update-form service="$ctrl.populateList" featured="$ctrl.featuredEntry"/>
   </div>
 </div>
