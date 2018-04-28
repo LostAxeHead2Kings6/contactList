@@ -28,11 +28,23 @@ var obtainEntries = function(callback) {
   return Entry.find({});
 };
 
-var addEntry = function() {
-  Entry.create({firstname: "Rumple", lastname: "Stillskin", email: "rstizzle@gmail.com"}, function(err, success) {
-      if (err) return handleError(err);
-  });
+var addEntry = function(object) {
+  return Entry.create({firstname: object.first, lastname: object.last, email: object.email});
 };
+
+var updateEntry = function(object) {
+  return Entry.updateOne(
+    {_id: object.id},
+    { $set:
+      {
+        firstname: object.firstname,
+        lastname: object.lastname,
+        email: object.email
+      }
+    }
+  )
+}
 
 module.exports.addEntry = addEntry;
 module.exports.obtainEntries = obtainEntries;
+module.exports.updateEntry = updateEntry;
