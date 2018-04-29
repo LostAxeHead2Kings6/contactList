@@ -1,5 +1,5 @@
 <h1>
-  THE LIST
+  The List
 </h1>
 <table>
   <tr>
@@ -7,7 +7,7 @@
     <th>Last Name</th>
     <th>Email</th>
   </tr>
-  <tr ng-repeat="entry in $ctrl.names" ng-click="$ctrl.service(entry)">
+  <tr ng-repeat="entry in list" ng-click="changeFeatured(entry)">
     <td>{{entry.firstname}}</td>
     <td>{{entry.lastname}}</td>
     <td>{{entry.email}}</td>

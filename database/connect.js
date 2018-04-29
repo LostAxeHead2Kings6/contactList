@@ -28,6 +28,10 @@ var obtainEntries = function(callback) {
   return Entry.find({});
 };
 
+var obtainSingleEntry = function(id) {
+  return Entry.find({_id: id})
+}
+
 var addEntry = function(object) {
   return Entry.create({firstname: object.first, lastname: object.last, email: object.email});
 };
@@ -48,3 +52,4 @@ var updateEntry = function(object) {
 module.exports.addEntry = addEntry;
 module.exports.obtainEntries = obtainEntries;
 module.exports.updateEntry = updateEntry;
+module.exports.obtainSingleEntry = obtainSingleEntry;

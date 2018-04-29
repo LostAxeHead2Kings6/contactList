@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/node_modules/angular-route/angular-route.js"></script>
+    <script src="angular-client/components/app.js"></script>
+    <title>Contact List</title>
+    <style>
+      body {background-color: #84e6e8}
+    </style>
+  </head>
+  <body ng-app="app">
+  <h1>
+    A TITLE TO THIS APPLICATION
+  </h1>
+  <div ng-controller="navCtrl">
+    <button ng-click="toList()">View the List</button>
+    <button ng-click="addNew()">Add a New Entry</button>
+
+    <div ng-view featured-item="featuredItem">
+    </div>
+
+  </div>
+
+    <script src="angular-client/components/list.js"></script>
+    <script src="angular-client/components/newContact.js"></script>
+    <script src="angular-client/components/updateContact.js"></script>
+  </body>
+</html>

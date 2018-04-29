@@ -1,24 +1,24 @@
 angular.module('app')
 
-  .controller('FormCtrl', function($http) {
-    this.firstname="";
-    this.lastname="";
-    this.email="";
+  .controller('newEntry', function($http, $scope, $location) {
+    $scope.firstname="";
+    $scope.lastname="";
+    $scope.email="";
 
-    this.addNewContact = function(first, last, email) {
-      this.firstname="";
-      this.lastname="";
-      this.email="";
+    $scope.addNewContact = function(first, last, email) {
+      $scope.firstname="";
+      $scope.lastname="";
+      $scope.email="";
 
-    $http.post('/entries', {data: {first: first, last: last, email: email}})
-      .then((data) => this.service(data));
+      $http.post('/entries', {data: {first: first, last: last, email: email}})
+        .then(() => $location.path('/list'));
     };
-  })
 
-  .component('addContactForm', {
-    bindings: {
-      service: '<'
-    },
-    templateUrl: 'angular-client/templates/newContact.html',
-    controller: 'FormCtrl'
+  })
+  .config(function($routeProvider){
+    $routeProvider
+      .when("/newentry", {
+        templateUrl: 'angular-client/templates/newContact.html',
+        controller: 'newEntry'
+  });
 });

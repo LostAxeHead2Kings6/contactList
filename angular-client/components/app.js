@@ -1,26 +1,14 @@
-angular.module('app', [])
+angular.module('app', ["ngRoute"])
 
-.service('onLoad', function($http) {
-  this.calldb = function(callback) {
-    $http.get('/entries').then((results) => callback(results));
-  };
-})
+  .controller('navCtrl', function($scope, $location) {
+    $scope.toList = function() {
+      console.log('called');
+      $location.path('/list');
+    };
 
-.controller('AppCtrl', function(onLoad) {
-  this.featuredEntry = {};
+    $scope.addNew = function() {
+      console.log('called');
+      $location.path('/newentry');
+    };
 
-  this.populateList = (data) => {
-    this.list = data.data;
-  };
-
-  this.updateThisEntry = (entry) => {
-    this.featuredEntry = JSON.parse(JSON.stringify(entry));
-  }
-
-  onLoad.calldb(this.populateList);
-})
-
-.component('app', {
-    templateUrl: 'angular-client/templates/app.html',
-    controller: 'AppCtrl'
 });

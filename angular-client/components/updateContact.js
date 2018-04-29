@@ -1,22 +1,27 @@
 angular.module('app')
 
-  .controller('FormCtrl2', function($http) {
-    this.firstname = 'asdfadf';
-    this.lastname = 'asdfdsaf';
-    this.email = 'asdfdsf';
+  .controller('updateCtrl', function($scope, $http, $routeParams, $location) {
+    $scope.populateForm = function(id) {
+      $http.get('/id', {params: {id: id}})
+        .then(function(data) {
+          console.log(data);
+          $scope.firstname = data.data[0].firstname;
+          $scope.lastname = data.data[0].lastname;
+          $scope.email = data.data[0].email;
+        });
+    }
 
-    this.updateContact = function(id, first, last, email) {
-      console.log(id, first, last, email);
-      $http.put('/entries', {id: id, firstname: first, lastname: last, email: email})
-        .then((data) => this.service(data));
+    $scope.updateContact = function(first, last, email) {
+      $http.put('/entries', {id: $routeParams.entryId, firstname: first, lastname: last, email: email})
+        .then(() => $location.path('/list'));
     };
-  })
 
-  .component('updateForm', {
-    bindings: {
-      featured: '<',
-      service: '<'
-    },
-    templateUrl: 'angular-client/templates/updateContact.html',
-    controller: 'FormCtrl2'
+    $scope.populateForm($routeParams.entryId);
+  })
+  .config(function($routeProvider){
+    $routeProvider
+      .when("/update/:entryId", {
+        templateUrl: 'angular-client/templates/updateContact.html',
+        controller: 'updateCtrl',
+  });
 });
