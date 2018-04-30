@@ -9,7 +9,8 @@ app.use(express.static(__dirname + '/../'));
 app.use(bodyParser.json());
 
 app.get('/entries', function(req, res) {
-  entries.obtainEntries().then((data) => res.send(data));
+  entries.obtainEntries()
+  .then((data) => res.send(data));
 });
 
 app.post('/entries', function(req, res) {
@@ -20,6 +21,12 @@ app.put('/entries', function(req, res) {
   console.log(req.body);
   entries.updateEntry(req.body).then(() => res.send());
 });
+
+app.delete('/entries', function(req, res) {
+  entries.deleteListing(req.query._id)
+  .then(() => entries.obtainEntries()
+  .then((data) => res.send(data)));
+})
 
 app.get('/id', function(req, res) {
   console.log('sandwich');

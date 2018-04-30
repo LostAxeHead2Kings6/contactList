@@ -1,4 +1,4 @@
-angular.module('app', ["ngRoute"])
+angular.module('app', ["ngRoute", "ui.bootstrap"])
 
   .controller('navCtrl', function($scope, $location) {
     $scope.toList = function() {

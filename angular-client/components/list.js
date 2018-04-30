@@ -1,20 +1,42 @@
 angular.module('app')
-  .service('onLoad', function($http) {
+  .service('serverRequests', function($http) {
     this.calldb = function(callback) {
       $http.get('/entries').then((results) => callback(results));
-    };
+    }
+
+    this.deleteContact = function(entry) {
+      return $http.delete('/entries', {params: entry});
+    }
   })
-  .controller('ListCtrl', function(onLoad, $scope, $location) {
+  .controller('ListCtrl', function(serverRequests, $scope, $location) {
+
     $scope.changeFeatured = function(object) {
+      console.log(object);
       $location.path('/update/' + object._id);
     };
 
-    $scope.populateList = (data) => {
-      console.log(data);
+    this.populateList = (data) => {
       $scope.list = data.data;
     };
 
-    onLoad.calldb($scope.populateList);
+    $scope.deleteListing = function(entry) {
+      serverRequests.deleteContact(entry)
+        .then((data) => $scope.list = data.data);
+    }
+    $scope.list = [];
+    serverRequests.calldb(this.populateList);
+
+    $scope.filteredList = [],
+    $scope.currentPage = 1,
+    $scope.numPerPage = 4,
+    $scope.maxSize = 5;
+
+    $scope.$watch('currentPage + numPerPage', function() {
+      var begin = (($scope.currentPage - 1) * $scope.numPerPage),
+      end = begin + $scope.numPerPage;
+
+      $scope.filteredList = $scope.list.slice(begin, end);
+    });
   })
   .config(function($routeProvider){
     $routeProvider

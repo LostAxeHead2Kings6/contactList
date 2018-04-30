@@ -19,13 +19,13 @@ var entrySchema = mongoose.Schema({
   lastname: {type: String, maxlength: 30},
   email: {type: String, maxlength: 50}
 }, {
-    versionKey: false // You should be aware of the outcome after set to false
+    versionKey: false
 });
 
 var Entry = mongoose.model('Entry', entrySchema);
 
 var obtainEntries = function(callback) {
-  return Entry.find({});
+  return Entry.find({}).sort({lastname: +1});
 };
 
 var obtainSingleEntry = function(id) {
@@ -49,7 +49,12 @@ var updateEntry = function(object) {
   )
 }
 
+var deleteListing = function(id) {
+  return Entry.findByIdAndRemove(id);
+}
+
 module.exports.addEntry = addEntry;
 module.exports.obtainEntries = obtainEntries;
 module.exports.updateEntry = updateEntry;
 module.exports.obtainSingleEntry = obtainSingleEntry;
+module.exports.deleteListing = deleteListing;

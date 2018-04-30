@@ -17,6 +17,12 @@ angular.module('app')
     };
 
     $scope.populateForm($routeParams.entryId);
+
+    $scope.cancelUpdate= function() {
+      $location.path('/list');
+    };
+
+    $scope.populateForm($routeParams.entryId);
   })
   .config(function($routeProvider){
     $routeProvider
