@@ -12,6 +12,7 @@ angular.module('app')
     $scope.pageSize = 10;
 
     $scope.changeFeatured = function(object) {
+      console.log('called', object);
       $location.path('/update/' + object._id);
     };
 

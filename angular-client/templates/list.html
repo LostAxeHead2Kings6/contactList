@@ -20,8 +20,9 @@
     <td>{{entry.email}}</td>
     <td>{{entry.phone}}</td>
     <td>
-      <button type="button"><span class="oi" data-glyph="pencil" title="pencil" aria-hidden="true" ng-click="changeFeatured(entry)"></span></button>
+      <button type="button" ng-click="changeFeatured(entry)"><span class="oi" data-glyph="pencil" title="pencil" aria-hidden="true"></span></button>
       <button type="button" data-toggle="modal" data-target="#deleteModal{{entry._id}}"><span class="oi" data-glyph="trash" title="trash" aria-hidden="true"></span></button>
+
       <!-- Deletion Modal Below -->
       <div class="modal fade" id="deleteModal{{entry._id}}" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
