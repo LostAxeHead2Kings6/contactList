@@ -1,7 +1,7 @@
 <h1>
   Add New Contact
 </h1>
-<form class="form-group" name="newContact" ng-submit="updateContact(firstname, lastname, email)">
+<form class="form-group" name="newContact" ng-submit="addNewContact(firstname, lastname, email, phone)">
   <div>
     First name:<input class="form-control" name='firstname' ng-model="firstname" type='text'>
     Last name:<input class="form-control" name='lastname' ng-model="lastname" type='text'>
@@ -13,7 +13,7 @@
   </div>
   <div>
     <input class="btn btn-primary" type='submit'></input>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#cancelModal" data-whatever="@mdo">Cancel</button>
+    <button type="button" data-toggle="modal" data-target="#cancelModal" class="btn btn-primary">Cancel</button>
   </div>
 </form>
 

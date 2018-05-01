@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="node_modules/angular/angular.js"></script>
     <script src="/node_modules/angular-route/angular-route.js"></script>
-    <script src="angular-client/components/app.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link href="/open-iconic-master/font/css/open-iconic.css" rel="stylesheet">
-    <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <script src="angular-client/components/app.js"></script>
     <title>Contact List</title>
   </head>
-  
+
   <body ng-app="app">
 
   <div class="buttonBanner" ng-controller="navCtrl">
     <button ng-click="toList()" class="btn btn-primary"><span class="oi" data-glyph="book"></span>View Your Contacts</button>
     <button ng-click="addNew()" class="btn btn-primary"><span class="oi" data-glyph="plus"></span><span class="oi" data-glyph="person"></span>New Entry</button>
   </div>
-    <div ng-view featured-item="featuredItem">
+
+    <div ng-view>
 
 
   </div>

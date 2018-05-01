@@ -10,10 +10,8 @@ angular.module('app')
   })
   .controller('ListCtrl', function(serverRequests, $scope, $location) {
     $scope.pageSize = 10;
-    $scope.latestEntryNumber;
 
     $scope.changeFeatured = function(object) {
-      console.log(object);
       $location.path('/update/' + object._id);
     };
 
@@ -43,8 +41,8 @@ angular.module('app')
 
     $scope.previousPage = function() {
       if ($scope.latestEntryNumber > $scope.pageSize) {
-        $scope.filteredList = $scope.list.slice($scope.latestEntryNumber - $scope.pageSize, $scope.latestEntryNumber)
         $scope.latestEntryNumber -= $scope.pageSize ;
+        $scope.filteredList = $scope.list.slice($scope.latestEntryNumber - $scope.pageSize, $scope.latestEntryNumber);
         $scope.presentPage = ($scope.latestEntryNumber/$scope.pageSize);
       }
     }
@@ -61,9 +59,4 @@ angular.module('app')
         templateUrl: 'angular-client/templates/list.html',
         controller: 'ListCtrl'
       })
-  })
-  .component('list', {
-    bindings: {
-      featuredItem: '<',
-    }
-});
+  });

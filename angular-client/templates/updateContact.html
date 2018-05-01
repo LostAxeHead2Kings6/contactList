@@ -1,7 +1,7 @@
 <h1>
   Update {{firstname}}'s info
 </h1>
-<form class="form-group" name="newContact" ng-submit="updateContact(firstname, lastname, email)">
+<form class="form-group" name="newContact" ng-submit="updateContact(firstname, lastname, email, phone)">
   <div>
     First name:<input class="form-control" name='firstname' ng-model="firstname" type='text'>
     Last name:<input class="form-control" name='lastname' ng-model="lastname" type='text'>
@@ -13,12 +13,12 @@
   </div>
   <div>
     <input class="btn btn-primary" type='submit'></input>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#pleaseWork" data-whatever="@mdo">Cancel</button>
+    <button type="button" data-toggle="modal" data-target="#cancelModal2" class="btn btn-primary">Cancel</button>
   </div>
 </form>
 
 <!-- Cancellation Modal Below -->
-<div class="modal fade" id="pleaseWork" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true">
+<div class="modal fade" id="cancelModal2" role="dialog" aria-labelledby="cancelModal2Label" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -28,7 +28,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="cancelNewListing()">Yes, Cancel New Listing</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="cancelUpdate()">Yes, Cancel New Listing</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Continue editing contact</button>
       </div>
     </div>

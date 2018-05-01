@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
-var entries = require('../database/connect.js');
+var db = require('../database/connect.js');
 
 var app = express();
 
@@ -9,30 +9,26 @@ app.use(express.static(__dirname + '/../'));
 app.use(bodyParser.json());
 
 app.get('/entries', function(req, res) {
-  entries.obtainEntries()
+  db.obtainEntries()
   .then((data) => res.send(data));
 });
 
 app.post('/entries', function(req, res) {
-  entries.addEntry(req.body.data).then(() => res.send());
+  db.addEntry(req.body.data).then(() => res.send());
 });
 
 app.put('/entries', function(req, res) {
-  console.log(req.body);
-  entries.updateEntry(req.body).then(() => res.send());
+  db.updateEntry(req.body).then(() => res.send());
 });
 
 app.delete('/entries', function(req, res) {
-  entries.deleteListing(req.query._id)
-  .then(() => entries.obtainEntries()
+  db.deleteListing(req.query._id)
+  .then(() => db.obtainEntries()
   .then((data) => res.send(data)));
 })
 
 app.get('/id', function(req, res) {
-  console.log('sandwich');
-  console.log(req.query.id);
-  console.log('sandwich');
-  entries.obtainSingleEntry(req.query.id).then((data) => res.send(data));
+  db.obtainSingleEntry(req.query.id).then((data) => res.send(data));
 })
 
 app.listen(8080, function() {

@@ -17,7 +17,8 @@ db.once('open', function() {
 var entrySchema = mongoose.Schema({
   firstname: {type: String, maxlength: 30},
   lastname: {type: String, maxlength: 30},
-  email: {type: String, maxlength: 50}
+  email: {type: String, maxlength: 50},
+  phone: {type: String, maxLength:12}
 }, {
     versionKey: false
 });
@@ -33,7 +34,7 @@ var obtainSingleEntry = function(id) {
 }
 
 var addEntry = function(object) {
-  return Entry.create({firstname: object.first, lastname: object.last, email: object.email});
+  return Entry.create({firstname: object.first, lastname: object.last, email: object.email, phone: object.phone});
 };
 
 var updateEntry = function(object) {
@@ -43,7 +44,8 @@ var updateEntry = function(object) {
       {
         firstname: object.firstname,
         lastname: object.lastname,
-        email: object.email
+        email: object.email,
+        phone: object.phone
       }
     }
   )

@@ -4,7 +4,6 @@ angular.module('app')
     $scope.populateForm = function(id) {
       $http.get('/id', {params: {id: id}})
         .then(function(data) {
-          console.log(data);
           $scope.firstname = data.data[0].firstname;
           $scope.lastname = data.data[0].lastname;
           $scope.email = data.data[0].email;
@@ -12,8 +11,8 @@ angular.module('app')
         });
     }
 
-    $scope.updateContact = function(first, last, email) {
-      $http.put('/entries', {id: $routeParams.entryId, firstname: first, lastname: last, email: email})
+    $scope.updateContact = function(first, last, email, phone) {
+      $http.put('/entries', {id: $routeParams.entryId, firstname: first, lastname: last, email: email, phone: phone})
         .then(() => $location.path('/list'));
     };
 

@@ -4,13 +4,15 @@ angular.module('app')
     $scope.firstname="";
     $scope.lastname="";
     $scope.email="";
+    $scope.phone="";
 
-    $scope.addNewContact = function(first, last, email) {
+    $scope.addNewContact = function(first, last, email, phone) {
       $scope.firstname="";
       $scope.lastname="";
       $scope.email="";
+      $scope.phone="";
 
-      $http.post('/entries', {data: {first: first, last: last, email: email}})
+      $http.post('/entries', {data: {first: first, last: last, email: email, phone: phone}})
         .then(() => $location.path('/list'));
     };
 
