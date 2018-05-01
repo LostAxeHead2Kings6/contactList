@@ -1,9 +1,36 @@
 <h1>
-  NEW CONTACT
+  Add New Contact
 </h1>
-<form name="newContact" ng-submit="addNewContact(firstname, lastname, email)">
-  First name:<input name='firstname' ng-model="firstname" type='text'>
-  Last name:<input name='lastname' ng-model="lastname" type='text'>
-  Email:<input name='email' ng-model="email" type='text'>
-  <input class="btn btn-primary" type='submit'>
+<form class="form-group" name="newContact" ng-submit="updateContact(firstname, lastname, email)">
+  <div>
+    First name:<input class="form-control" name='firstname' ng-model="firstname" type='text'>
+    Last name:<input class="form-control" name='lastname' ng-model="lastname" type='text'>
+  </div>
+  <div>
+    Email:<input class="form-control" name='email' ng-model="email" type='text'>
+    Phone:<input class="form-control" name='phone' ng-model="phone" type='text'>
+
+  </div>
+  <div>
+    <input class="btn btn-primary" type='submit'></input>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#cancelModal" data-whatever="@mdo">Cancel</button>
+  </div>
 </form>
+
+<!-- Cancellation Modal Below -->
+<div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Are you sure you want to cancel?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="cancelNewListing()">Yes, Cancel New Listing</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Continue editing contact</button>
+      </div>
+    </div>
+  </div>
+</div>

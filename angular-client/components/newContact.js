@@ -14,6 +14,10 @@ angular.module('app')
         .then(() => $location.path('/list'));
     };
 
+    $scope.cancelNewListing = function() {
+      $location.path('/list')
+    }
+
   })
   .config(function($routeProvider){
     $routeProvider

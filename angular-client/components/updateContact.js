@@ -8,6 +8,7 @@ angular.module('app')
           $scope.firstname = data.data[0].firstname;
           $scope.lastname = data.data[0].lastname;
           $scope.email = data.data[0].email;
+          $scope.phone = data.data[0].phone;
         });
     }
 
